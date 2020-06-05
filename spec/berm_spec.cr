@@ -17,13 +17,13 @@ describe Berm do
   it "can combine flags" do
     read = ReadWriteFlag::Read
     write = ReadWriteFlag::Write
-    
+
     read.permits_read?.should be_true
     read.permits_write?.should be_false
 
     write.permits_read?.should be_false
     write.permits_write?.should be_true
-    
+
     read_write = read | write
 
     read_write.permits_read?.should be_true
