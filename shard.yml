@@ -1,0 +1,13 @@
+name: berm
+version: 0.1.0
+
+authors:
+  - Giuseppe Pagano <giuseppe.pagano.p@gmail.com>
+
+targets:
+  berm:
+    main: src/berm.cr
+
+crystal: 0.34.0
+
+license: MIT
