@@ -1,6 +1,6 @@
-# Berm
+# Berm [![Build Status](https://travis-ci.com/giuseongit/Berm.svg?token=gg8shaAxBygK2RDYeLJx&branch=master)](https://travis-ci.com/giuseongit/Berm) [![GitHub release](https://img.shields.io/github/release/giuseongit/Berm.svg)](https://github.com/giuseongit/Berm/releases)
 
-Berm is a simple library that helps to manage flag.
+Berm is a simple library that helps to manage permissions.
 
 The name come from **b**inary p**erm**missions because it can easily manage permissions using byte operations.
 
