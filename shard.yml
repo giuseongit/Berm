@@ -1,7 +1,7 @@
 name: berm
 description: |
   Simple library that helps to manage permissions.
-version: 0.1.0
+version: 0.2.0
 
 authors:
   - Giuseppe Pagano <giuseppe.pagano.p@gmail.com>
@@ -12,7 +12,7 @@ targets:
   berm:
     main: src/berm.cr
 
-crystal: 0.34.0
+crystal: 0.35.1
 
 license: MIT
 

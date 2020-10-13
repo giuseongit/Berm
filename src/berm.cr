@@ -1,4 +1,5 @@
 require "yaml"
+
 module Berm
   VERSION = "0.1.0"
 
