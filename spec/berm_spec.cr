@@ -39,4 +39,15 @@ describe Berm do
     StringArrayFlags::A.should_not be_nil
     StringArrayFlags::B.should_not be_nil
   end
+
+  it "Two items can be confronted" do
+    a = StringArrayFlags::A
+    aa = StringArrayFlags::A
+    b = StringArrayFlags::B
+
+    (a == aa).should be_true
+    (a != aa).should be_false
+    (a == b).should be_false
+    (a != b).should be_true
+  end
 end

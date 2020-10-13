@@ -1,3 +1,4 @@
+require "yaml"
 module Berm
   VERSION = "0.1.0"
 
@@ -87,6 +88,14 @@ module Berm
             {{@type}}.new(value & other.value)
           end
 
+          def ==(other : {{@type}})
+            @value == other.value
+          end
+
+          def !=(other : {{@type}})
+            @value != other.value
+          end
+
           def to_s(io : IO)
             enabled = [] of PermValues
             PermValues.each do |val|
@@ -94,6 +103,37 @@ module Berm
             end
             enabled << PermValues::None if enabled.size == 0
             io << "{{@type}}::#{enabled.join("|")}"
+          end
+
+          def to_yaml(yaml : YAML::Nodes::Builder)
+            enabled = [] of PermValues
+            PermValues.each do |val|
+              enabled << val if value & val.value == val.value
+            end
+            enabled << PermValues::None if enabled.size == 0
+
+            yaml.scalar enabled.join("|").downcase
+          end
+
+          def from_string(string : String) : UInt32
+            flags = string.split("|")
+            res = 0_u32
+
+            flags.each do |flag|
+              PermValues.each do |val|
+                res += val.to_u32 if val.to_s.downcase == flag
+              end
+            end
+
+            return res
+          end
+
+          def initialize(ctx : YAML::ParseContext, node : YAML::Nodes::Node)
+            value = 0_u32
+            if node.is_a?(YAML::Nodes::Scalar)
+              value = from_string(node.value)
+            end
+            @value = value
           end
 
           build_permission_requests
